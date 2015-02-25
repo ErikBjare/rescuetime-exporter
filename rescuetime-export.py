@@ -23,11 +23,6 @@ def main(apikey):
 
     data = get_data(apikey, date_start, date_end, resolution)
 
-    try:
-        os.mkdir(output_dir)
-    except OSError as e:
-        print("An error was thrown while trying to create data dir, this is normal if it already exists.")
-
     filepath = "{}/rescuetime{}-{}.csv".format(output_dir, date_start.replace("-", ""), date_end.replace("-", ""))
     with open(filepath, "w") as f:
         f.write(data)
