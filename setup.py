@@ -48,7 +48,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='development rescuetime zenobase',
+    keywords='rescuetime zenobase',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
@@ -58,7 +58,7 @@ setup(
     # project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/technical.html#install-requires-vs-requirements-files
-    install_requires=['pytz','requests', 'tzlocal', 'pyzenobase'],
+    install_requires=['requests', 'pyzenobase'],
 
-    dependency_links=['https://git@github.com/liulang/python3-xlib/archive/master.zip#egg=xlib']
+    dependency_links=['https://github.com/ErikBjare/pyzenobase/archive/master.zip#egg=pyzenobase']
 )
