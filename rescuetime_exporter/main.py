@@ -13,7 +13,7 @@ resolution = "minute"
 
 ## You should probably not change this unless you really want to
 script_location = os.path.dirname(os.path.realpath(__file__))
-output_dir = script_location + "/output"
+output_dir = script_location + "/../output"
 
 def main(apikey):
     if apikey == "":
