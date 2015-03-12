@@ -3,23 +3,22 @@
 import os
 import requests
 
-# Set the API key before you run the program
-apikey = ""
-
 # Settings
 ## Can be "month", "week", "day", "hour" or "minute"
-## "minute" returns the data in 5 minute chunks
+## "minute" returns the data in 5 minute chunks, this is the highest allowed by RescueTime
 resolution = "minute"
 
 ## You should probably not change this unless you really want to
 script_location = os.path.dirname(os.path.realpath(__file__))
 output_dir = script_location + "/../output"
 
-def main(apikey):
-    if apikey == "":
+def main(apikey=None, date_start=None, date_end=None):
+    if not apikey:
         apikey = input("Enter your API key: ")
-    date_start = input("Start date (YYYY-MM-DD): ")
-    date_end = input("End date (YYYY-MM-DD): ")
+    if not date_start:
+        date_start = input("Start date (YYYY-MM-DD): ")
+    if not date_end:
+        date_end = input("End date (YYYY-MM-DD): ")
 
     data = get_data(apikey, date_start, date_end, resolution)
 
@@ -41,5 +40,5 @@ def get_data(apikey, date_start, date_end, resolution="hour"):
     return data
 
 if __name__ == "__main__":
-    main(apikey)
+    main()
 
