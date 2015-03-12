@@ -21,10 +21,8 @@ if __name__ == "__main__":
     username = input("Zenobase Username: ")
     password = input("Zenobase Password: ")
     
-    zapi = ZenobaseAPI(username=username, password=password)
-    print("Successfully authorized with Zenobase")
-    
-    try:
+    with ZenobaseAPI(username, password) as zapi:
+        print("Successfully authorized with Zenobase")
         bucket = zapi.create_or_get_bucket(BUCKET_NAME)
         bucket_id = bucket["@id"]
         print("Successfully created and/or found bucket '{}'".format(BUCKET_NAME))
@@ -38,8 +36,6 @@ if __name__ == "__main__":
                 events = list(map(row_to_zenobase_event, reader))
                 if len(events) != 0: 
                     print("Converted {} events".format(len(events)))
-                    zapi.create_events(bucket_id, events)
+                    zapi.create_events(bucket_id, events[:10])
                     print("Saved {} events to Zenobase".format(len(events)))
-    finally:
-        zapi.close()
 
